@@ -76,4 +76,24 @@ router.post('/',[
     }
 })
 
+
+// @route GET api/users
+// @desc get a list of all users
+// @access private
+
+router.get('/', async (req, res) => {
+    try {
+        const users = await User.find()
+        console.log(users)
+        console.log("============")
+        res.json(users)
+        console.log(users)
+        
+    } catch (error) {
+        console.error(err.message)
+        res.status(500).send("Server Error")
+        
+    }
+} )
+
 module.exports = router
