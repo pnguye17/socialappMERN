@@ -47,18 +47,16 @@ router.put('/:id',
 // @desc DELETE user
 // @access private
 
-router.delete('/:id', auth, async (req, res) => { 
+router.delete('/', auth, async (req, res) => { 
 
         try {
             const deleteUser = await User.findOneAndRemove({ _id: req.user.id})
-            console.log(deleteUser, "<==========deleted user")
-            const updateUserList = await User.find()
-            res.json(updateUserList)
+           
+            res.json("User is deleted")
         
     } catch (error) {
         console.error(error.message)
         res.status(500).send("Server error")
-        
     }
 }
 )
