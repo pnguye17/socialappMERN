@@ -29,13 +29,31 @@ router.put('/:id',
         }
         try {
             const updateUser = await User.findById(req.params.id)
-            console.log(updateUser, "<====== old user")
         
             updateUser.email = email
     
-            console.log(updateUser, "<====== updated user")
             await updateUser.save()
             res.json(updateUser)
+        
+    } catch (error) {
+        console.error(error.message)
+        res.status(500).send("Server error")
+        
+    }
+}
+)
+
+// @route DELETE api/user/:id
+// @desc DELETE user
+// @access private
+
+router.delete('/:id', auth, async (req, res) => { 
+
+        try {
+            const deleteUser = await User.findOneAndRemove({ _id: req.user.id})
+            console.log(deleteUser, "<==========deleted user")
+            const updateUserList = await User.find()
+            res.json(updateUserList)
         
     } catch (error) {
         console.error(error.message)
