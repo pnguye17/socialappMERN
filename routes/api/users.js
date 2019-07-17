@@ -5,8 +5,47 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const config = require('config')
 const { check, validationResult } = require('express-validator')
+const auth = require('../../middleware/auth')
 
 const User = require('../../models/User')
+
+// @route PUT api/user/:id
+// @desc update user info
+// @access private
+
+router.put('/:id', 
+    [ 
+        auth, 
+        [
+            check('email', "Please include a valid email")
+            .isEmail()
+        ]
+    ], 
+    async (req, res) => { 
+        const errors = validationResult(req)
+        const { email } = req.body
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array()})
+        }
+        try {
+            const updateUser = await User.findById(req.params.id)
+            console.log(updateUser, "<====== old user")
+        
+            updateUser.email = email
+    
+            console.log(updateUser, "<====== updated user")
+            await updateUser.save()
+            res.json(updateUser)
+        
+    } catch (error) {
+        console.error(error.message)
+        res.status(500).send("Server error")
+        
+    }
+}
+)
+
+
 // @route Post api/user
 // @desc register user
 // @access Public
@@ -86,7 +125,7 @@ router.get('/', async (req, res) => {
         const users = await User.find()
         console.log(users)
         res.json(users)
-        
+
     } catch (error) {
         console.error(err.message)
         res.status(500).send("Server Error")
