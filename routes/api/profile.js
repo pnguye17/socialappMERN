@@ -253,9 +253,8 @@ router.put(
         [
             check("school", "school is required").not().isEmpty(),
             check("degree", "degree is required").not().isEmpty(),
-            check("from", "from is required").not().isEmpty(),
-            check("fieldOfStudy", "field of study is required").not().isEmpty()
-    
+            check("fieldOfStudy", "field of study is required").not().isEmpty(),
+            check("from", "from is required").not().isEmpty()
         ]
        ], 
        async (req, res) => {
@@ -291,9 +290,9 @@ router.put(
                 await profile.save()
                 res.json(profile)
 
-            } catch (error) {
+            } catch (err) {
                 console.error(err.message)
-                res.status(500).send("sever error")
+                res.status(500).send("server error")
                 
             }
        }
