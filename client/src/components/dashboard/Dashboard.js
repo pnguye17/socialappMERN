@@ -4,6 +4,8 @@ import Spinner from '../layout/Spinner'
 import PropTypes from 'prop-types'
 import { connect } from "react-redux"
 import DashboardActions from './DashboardActions'
+import Experience from './Experience'
+import Education from './Education'
 import { getCurrentProfile} from '../../actions/profile'
 
 const Dashboard = ({ getCurrentProfile, auth: { user }, profile: {profile, loading}}) => {
@@ -19,8 +21,10 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: {profile, loadi
     </p>
     { profile !== null ? <Fragment>
         <DashboardActions />
+        <Experience experience={profile.experience} />
+        <Education education={profile.education} />
     </Fragment> :
-     <Fragment><p>
+     <Fragment><p>  
         You have not set a profile, please add information about yourself
      </p>
      <Link to='/create-profile' className="btn btn-primary my-1">Create Profile</Link>

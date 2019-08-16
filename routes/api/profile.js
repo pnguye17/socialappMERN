@@ -253,7 +253,7 @@ router.put(
         [
             check("school", "school is required").not().isEmpty(),
             check("degree", "degree is required").not().isEmpty(),
-            check("fieldOfStudy", "field of study is required").not().isEmpty(),
+            check("study", "field of study is required").not().isEmpty(),
             check("from", "from is required").not().isEmpty()
         ]
        ], 
@@ -265,7 +265,7 @@ router.put(
             const {
                 school,
                 degree,
-                fieldOfStudy,
+                study,
                 from,
                 to,
                 current,
@@ -275,7 +275,7 @@ router.put(
             const newEdu = {
                 school,
                 degree,
-                fieldOfStudy,
+                study,
                 from,
                 to,
                 current,
@@ -286,6 +286,7 @@ router.put(
                 const profile = await Profile.findOne({
                     user: req.user.id
                 })
+                console.log(profile)
                 profile.education.unshift(newEdu)
                 await profile.save()
                 res.json(profile)

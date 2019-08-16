@@ -96,7 +96,7 @@ export const addEducation = (formData, history) => async dispatch => {
       };
   
       const res = await axios.put('/api/profile/education', formData, config);
-  
+
       dispatch({
         type: UPDATE_PROFILE,
         payload: res.data
