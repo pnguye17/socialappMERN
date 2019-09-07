@@ -5,7 +5,6 @@ import {
     GET_PROFILE, 
     PROFILE_ERROR,
     UPDATE_PROFILE, 
-    SET_ALERT,
     CLEAR_PROFILE,
     DELETE_ACCOUNT} from './types'
 
@@ -171,6 +170,7 @@ export const deleteAccount = () => async dispatch => {
             type: DELETE_ACCOUNT
         })
         dispatch(setAlert("Your account has been removed"))
+        console.log(res, '<=======================deleted profile')
     } catch (err) {
         dispatch({
             type: PROFILE_ERROR,
