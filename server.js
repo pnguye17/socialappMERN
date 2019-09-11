@@ -4,8 +4,8 @@ const app = express()
 const path = require('path')
 
 // Connect Database
-connectDB()
-// require('./config/db')
+// connectDB()
+require('./config/db')
 
 
 //init middlewar
@@ -37,3 +37,6 @@ app.listen(PORT, ()=>
     console.log(`server started on port ${PORT}`))
 
 //please build website heroku!!!
+
+
+//   "heroku-postbuild":  "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
