@@ -40,4 +40,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(Landing);
-© 2019 GitHub, Inc.

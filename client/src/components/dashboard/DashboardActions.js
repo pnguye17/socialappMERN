@@ -18,4 +18,3 @@ const DashboardActions = () => {
 };
 
 export default DashboardActions;
-© 2019 GitHub, Inc.

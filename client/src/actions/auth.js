@@ -7,7 +7,7 @@ import {
     AUTH_ERROR,
     LOGIN_FAIL,
     LOGIN_SUCCESS,
-    LOG_OUT,
+    LOGOUT,
     CLEAR_PROFILE
 } from './types'
 import setAuthToken from '../utils/setAuthToken'
@@ -92,5 +92,5 @@ export const login  = (email, password) => async dispatch => {
 
 export const logout = () => dispath => {
     dispath({ type: CLEAR_PROFILE})
-    dispath({ type: LOG_OUT})
+    dispath({ type: LOGOUT})
 }
