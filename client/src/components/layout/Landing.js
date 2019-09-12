@@ -12,10 +12,9 @@ const Landing = ({ isAuthenticated }) => {
     <section className='landing'>
       <div className='dark-overlay'>
         <div className='landing-inner'>
-          <h1 className='x-large'>DEV // MERS</h1>
+          <h1 className='x-large'>COFFEE meets DEVERS</h1>
           <p className='lead'>
-            Create a developer profile, share posts and get help from
-            other developers
+            Meet your fellow Developers
           </p>
           <div className='buttons'>
             <Link to='/register' className='btn btn-primary'>
