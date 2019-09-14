@@ -115,8 +115,7 @@ router.delete('/:id', auth, async (req, res) => {
 
 
 // @route PUT api/post/like/:postid
-// @desc  Like a post
-// @access private
+//
 
 router.put('/like/:id', auth, async (req, res) => {
     try {
